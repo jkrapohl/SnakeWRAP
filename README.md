@@ -1,4 +1,4 @@
-# metaWRAP-Snakemake
+# Snakemake-metaWRAP
 
 A Snakemake script for automation of metaWRAP modules
 

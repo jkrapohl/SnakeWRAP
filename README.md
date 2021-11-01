@@ -16,13 +16,16 @@ https://github.com/bxlab/metaWRAP
 ##### Download all databases as required by metaWRAP
 
 ### 2) Update:
-#### Paths in config-metawrap (found in metaWRAP bin)
-#### Paths in Snakemake submission config (e.g. sample-config.yaml)
-#### Input file names in metatext file
-#### Core usage in mw-sample-sbatch-submission-script.sh
+Paths in config-metawrap (found in metaWRAP bin)
+
+Paths in Snakemake submission config (e.g. sample-config.yaml)
+
+Input file names in metatext file
+
+Core usage in mw-sample-sbatch-submission-script.sh
 
 ### 3) Copy read_qc_snakemake.sh into the directory containing the metaWRAP module scripts
-#### This is in the metaWRAP bin/metawrap-modules directory. Scripts can be placed into another directory for easy access, but must have the path given in the submission config file
+This is in the metaWRAP bin/metawrap-modules directory. Scripts can be placed into another directory for easy access, but must have the path given in the submission config file
 
 ### 4) Download all fastq files. Make sure they are gzipped, in correct format, and are listed correctly in the metatext.txt file, including names as header.
 

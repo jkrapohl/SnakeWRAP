@@ -24,7 +24,7 @@ https://github.com/bxlab/metaWRAP
 ### 3) Copy read_qc_snakemake.sh into the directory containing the metaWRAP module scripts
 #### This is in the metaWRAP bin/metawrap-modules directory. Scripts can be placed into another directory for easy access, but must have the path given in the submission config file
 
-### 4) Download all fastq files. 
+### 4) Download all fastq files. Make sure they are gzipped, in correct format, and are listed correctly in the metatext.txt file, including names as header.
 
 ### 5) Run by submitting the mw-sample-sbatch-submission-script.sh with sbatch.
 #### Alternatively this can be run on the command line:

@@ -25,7 +25,7 @@ Input file names in metatext file
 Core usage in mw-sample-sbatch-submission-script.sh
 
 ### 3) Copy read_qc_snakemake.sh into the directory containing the metaWRAP module scripts
-This is in the metaWRAP bin/metawrap-modules directory. Scripts can be placed into another directory for easy access, but must have the path given in the submission config file
+This is in the metaWRAP bin/metawrap-modules directory. Scripts can be placed into another directory for easy access, but must have the path given in the submission config file as well as config-metawrap
 
 ### 4) Download all fastq files. Make sure they are gzipped, in correct format, and are listed correctly in the metatext.txt file, including names as header.
 
@@ -35,7 +35,6 @@ This is in the metaWRAP bin/metawrap-modules directory. Scripts can be placed in
 ##### source activate metawrap-env
 ##### source activate --stack snakemake
 ##### snakemake --nolock --cores # --configfile configfile_name
-
 
 
 ## Common bug fixes

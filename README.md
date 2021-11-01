@@ -40,12 +40,19 @@ https://github.com/bxlab/metaWRAP
 ### Some common fixes are:
 
 ReadQC module error - check if inputs are in correct format (e.g. SRR1235678.sra.fq.gz, ERR0124567.fastq.gz, etc)
+
 Joblib error- pip install joblib into snakemake environment and base
+
 Cannot find/use NCBI database: Download newer version (such as version 4/5)
+
 Copy config-metawrap into scripts folder (may resolve some path issues)
+
 CheckM error- run at least 32 GB RAM per node (usually 4 or more cores)
+
 Classify bins module error- update classify bins.sh and prunebasthits.py, found in metaWRAP github
+
 Blobology module bowtie error- conda install tbb=2020.2 into metawrap env
+
 Annotate module openssl error – in mw conda install metawrap-mg=1.2.1 openssl=1.0 (metawrap-mg=version)
 
 

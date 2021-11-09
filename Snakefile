@@ -7,7 +7,7 @@ if len(config) == 0:
     sys.exit("Make sure there is a config.yaml file in " + os.getcwd() + " or specify one with the --configfile commandline parameter.")
 
 ## Make sure that all expected variables from the config file are in the config dictionary
-configvars = ['metatext', 'scripts', 'assembly', 'blobplot', 'kraken', 'salmon', 'taxator', 'prokka', 'output', 'readlength', 'ncores', 'input', 'fqext1', 'fqext2', 'fqsuffix', 'output']
+configvars = ['metatext', 'scripts', 'assembly', 'blobplot', 'kraken', 'salmon', 'taxator', 'prokka', 'output', 'ncores', 'input', 'fqext1', 'fqext2', 'fqsuffix', 'output']
 for k in configvars:
 	if k not in config:
 		config[k] = None

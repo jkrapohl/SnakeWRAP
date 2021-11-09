@@ -35,13 +35,8 @@ prokka: TRUE
 
 ## DEFINE OUTPUT DIRECTORY
 ##--------------------------------------------------------------------------------------------
-output: path/to/output
-
-
-## Information about the experiment
+output: path/to/output/directory
 ##--------------------------------------------------------------------------------------------
-readlength: 63
-
 ## The maximal number of cores to use for metaWRAP modules.
 ## Note that the actual number of cores available to Snakemake is determined by
 ## the --cores argument when it is invoked.

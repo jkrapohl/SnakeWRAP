@@ -7,20 +7,19 @@ tags:
   - whole genome shotgun sequencing
   - metagenome assembled genome
   - pipeline
- authors:
+authors:
   - name: John Krapohl
     orcid: 0000-0003-0364-6387
     affiliation: 1
   - name: Brett E. Pickett
     orcid: 0000-0001-7930-8160
     affiliation: 1
- affiliations:
+affiliations:
   - name: Department of Microbiology and Molecular Biology, Brigham Young University; Provo, UT, USA
     index: 1
 date: 23 November 2021
 bibliography: paper.bib
 ---
-
 
 # Summary
 As sequencing technology has become cheaper and more readily accessible, the need for the computational capacity to process sequencing data has become apparent. The merits of Whole Genome Sequencing have been particularly useful in relation to the field of metagenomics. Substantial effort has been spent developing software and computational pipelines  to cater to this growing need, notably MetaWRAP. MetaWRAP combines many of the necessary tools to process reads, create bins, and visualize data within a robust modular design  [@metawrap]. The primary limitation arising from such a design is the inability to scale its usage to massive datasets. Snakemake is a widely-used  Python based workflow management system that automates repetitive tasks, allowing it to be both scalable and reproducible [@snakemake]. By integrating the MetaWRAP  pipeline into Snakemake, the customizable nature of MetaWRAP can be preserved even when automatically processing large datasets through a Snakemake workflow. This script automates the tasks performed within MetaWRAP, allowing for individual modules to be toggled on and off using Snakemake defined “rules”.

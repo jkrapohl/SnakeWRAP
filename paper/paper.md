@@ -1,5 +1,5 @@
----
-title: METASnake: A Snakemake Workflow to facilitate automated processing of metagenomic data through the metaWRAP pipeline
+--- 
+title: 'METASnake: A Snakemake Workflow to facilitate automated processing of metagenomic data through the metaWRAP pipeline'
 tags:
   - metaWRAP
   - snakemake
@@ -19,7 +19,7 @@ tags:
    index: 1
 date: 23 November 2021
 bibliography: paper.bib
----
+--- 
 
 # Summary
 

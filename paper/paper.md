@@ -1,4 +1,4 @@
---- 
+---
 title: 'METASnake: A Snakemake Workflow to facilitate automated processing of metagenomic data through the metaWRAP pipeline'
 tags:
   - metaWRAP
@@ -14,12 +14,12 @@ tags:
   - name: Brett E. Pickett
     orcid: 0000-0001-7930-8160
     affiliation: 1
-    affiliations:
- - name: Department of Microbiology and Molecular Biology, Brigham Young University; Provo, UT, USA
-   index: 1
+ affiliations:
+  - name: Department of Microbiology and Molecular Biology, Brigham Young University; Provo, UT, USA
+    index: 1
 date: 23 November 2021
 bibliography: paper.bib
---- 
+---
 
 
 # Summary

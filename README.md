@@ -58,8 +58,8 @@ Blobology module bowtie error- conda install tbb=2020.2 into metawrap env
 Annotate module openssl error – in mw conda install metawrap-mg=1.2.1 openssl=1.0 (metawrap-mg=version)
 
 
-### Citing Snakemake-metaWRAP
-If Snakemake-metaWRAP was useful to your research, please cite both the publication associted with metaWRAP and Snakemake, as well as this code: 
+### Citing METASnake
+If Snakemake-metaWRAP was useful to your research, please cite this code as well as both the publication associated with metaWRAP and Snakemake:
 
 MetaWRAP - a flexible pipeline for genome-resolved metagenomic data analysis. 
 

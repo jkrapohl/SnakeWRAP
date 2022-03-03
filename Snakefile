@@ -7,7 +7,7 @@ if len(config) == 0:
     sys.exit("Make sure there is a config.yaml file in " + os.getcwd() + " or specify one with the --configfile commandline parameter.")
 
 ## Make sure that all expected variables from the config file are in the config dictionary
-configvars = ['metatext', 'scripts', 'assembly', 'blobplot', 'kraken', 'salmon', 'taxator', 'prokka', 'output', 'ncores', 'input', 'fqext1', 'fqext2', 'fqsuffix', 'output']
+configvars = ['metatext', 'scripts', 'assembly', 'blobplot', 'kraken', 'salmon', 'taxator', 'prokka', 'output', 'readlength', 'ncores', 'input', 'fqext1', 'fqext2', 'fqsuffix', 'output']
 for k in configvars:
 	if k not in config:
 		config[k] = None
@@ -49,26 +49,11 @@ scriptdir = getpath(config["scripts"])
 
 
 ## ------------------------------------------------------------------------------------ ##
-def rule_all_blob(wildcards):
-	if config["blobplot"]:
-		input = outputdir + "blobology/blobplot_figures_only_binned_contigs/final_assembly.binned.blobplot.bin.png"
-	else:
-		input = outputdir + "blobology/blobplot_figures_only_binned_contigs/skip.png"
-	return input
-
-
-def rule_all_quant(wildcards):
-	if config["salmon"]:
-		input = outputdir + "bin_quantification/bin_abundance_heatmap.png"
-	else:
-		input.append(outputdir + "bin_quantification/skip.txt")
-	return input
-
 rule all:
 	input:
-		rule_all_blob,
+		outputdir + "blobology/blobplot_figures_only_binned_contigs/final_assembly.binned.blobplot.bin.png",
 		outputdir + "kraken/kronagram.html",
-		rule_all_quant,
+		outputdir + "bin_quantification/bin_abundance_heatmap.png",
 		directory(outputdir + "bin_annotation/bin_funct_annotations"),
 		outputdir + "bin_classification/bin_taxonomy.tab"
 #
@@ -78,8 +63,8 @@ rule all:
 ## QC Module
 rule fastqc:
 	input:
-		fastq1 = inputdir + "{sample}_" + str(config["fqext1"]) + "." + str(config["fqsuffix"]) + ".gz",
-		fastq2 = inputdir + "{sample}_" + str(config["fqext2"]) + "." + str(config["fqsuffix"]) + ".gz",
+		fastq1 = inputdir + "{sample}_" + str(config["fqext1"]) + ".fastq.gz",
+		fastq2 = inputdir + "{sample}_" + str(config["fqext2"]) + ".fastq.gz",
 		script = scriptdir + "read_qc_snakemake.sh"
 	output:
 		outputdir + "QCModule/{sample}_final_pure_reads_1.fastq", 
@@ -239,13 +224,13 @@ rule bin_quantify:
 		config["ncores"]
 	shell:
 		"""
-		if [ {params.salmon_run} == "FALSE" ]
+		if [ {params.salmon_run} == "False" ]
 		then
 			echo "Skipping Quantification Module"
 			if [ ! -d {params.salmon_not} ] ; then mkdir {params.salmon_not} ; fi
-			if [ ! -f {params.salmon_not}/skip.txt ] ; then touch {params.salmon_not}/skip.txt ; fi
-			echo "THIS FILE IS INTENTIONALLY LEFT BLANK" >> {params.salmon_not}/skip.txt
-			echo "DELETE THIS FILE IF YOU WISH TO RUN QUANTIFY BINS" >> {params.salmon_not}/skip.txt
+			if [ ! -f {params.salmon_not}/skip.txt ] ; then touch {params.salmon_not}/bin_abundance_heatmap.png ; fi
+			echo "THIS FILE IS INTENTIONALLY LEFT BLANK" >> {params.salmon_not}/bin_abundance_heatmap.png
+			echo "DELETE THIS FILE IF YOU WISH TO RUN QUANTIFY BINS" >> {params.salmon_not}/bin_abundance_heatmap.png
 		else
 			echo "Starting Quantify Bins Module"
 			{input.script} -t {threads} -b {input.bins_refined} -o {params.output_q} -a {input.final_assembly} {params.od}QCModule/*_final_pure_reads_*
@@ -270,7 +255,7 @@ rule classify_bins:
 		config["ncores"]
 	shell:
 		"""
-		if [ {params.taxator_run} == "FALSE" ]
+		if [ {params.taxator_run} == "False" ]
 		then
 			echo "Skipping Classify Bins Module"
 			if [ ! -d {params.output_class} ] ; then mkdir {params.output_class} ; fi
@@ -301,7 +286,7 @@ rule annotate_bins:
 		config["ncores"]
 	shell:
 		"""
-		if [ {params.prokka_run} == "FALSE" ]
+		if [ {params.prokka_run} == "False" ]
 		then
 			echo "Skipping Annotate Bins Module"
 			if [ ! -d {params.output_an} ] ; then mkdir {params.output_an} ; fi
@@ -334,13 +319,13 @@ rule blobology:
 		config["ncores"]
 	shell:
 		"""
-		if [ {params.blob_run} == "FALSE" ]
+		if [ {params.blob_run} == "False" ]
 		then
 			echo "Skipping Blobology Module"
-			if [ ! -d {params.output_blob}/blobplot_figures ] ; then mkdir {params.output_blob}/blobplot_figures ; fi
-			if [ ! -f {params.output_blob}/blobplot_figures/skip.png ] ; then touch {params.output_blob}/blobplot_figures/skip.png ; fi
-			echo "THIS FILE IS INTENTIONALLY LEFT BLANK" >> {params.output_blob}/blobplot_figures_only_binned_contigs/skip.png
-			echo "DELETE THIS FILE IF YOU WISH TO RUN BLOBOLOGY" >> {params.output_blob}/blobplot_figures_only_binned_contigs/skip.png
+			if [ ! -d {params.output_blob}/blobplot_figures_only_binned_contigs ] ; then mkdir {params.output_blob}/blobplot_figures_only_binned_contigss ; fi
+			if [ ! -f {params.output_blob}/blobplot_figures_only_binned_contigs/final_assembly.binned.blobplot.bin.png ] ; then touch {params.output_blob}/blobplot_figures/final_assembly.binned.blobplot.bin.png ; fi
+			echo "THIS FILE IS INTENTIONALLY LEFT BLANK" >> {params.output_blob}/blobplot_figures_only_binned_contigs/final_assembly.binned.blobplot.bin.png
+			echo "DELETE THIS FILE IF YOU WISH TO RUN BLOBOLOGY" >> {params.output_blob}/blobplot_figures_only_binned_contigs/final_assembly.binned.blobplot.bin.png
 		else
 			echo "Starting Blobology Module"
 			{input.script} --bins {input.bins_refined} -t {threads} -a {input.final_assembly} -o {params.output_blob} {params.od}QCModule/*_final_pure_reads_*

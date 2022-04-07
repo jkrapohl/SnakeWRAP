@@ -1,4 +1,4 @@
-# METASnake
+# SnakeWRAP
 
 A Snakemake script for automation of metaWRAP modules
 
@@ -58,8 +58,10 @@ Blobology module bowtie error- conda install tbb=2020.2 into metawrap env
 Annotate module openssl error – in mw conda install metawrap-mg=1.2.1 openssl=1.0 (metawrap-mg=version)
 
 
-### Citing METASnake
-If Snakemake-metaWRAP was useful to your research, please cite this code as well as both the publication associated with metaWRAP and Snakemake:
+### Citing SnakeWRAP
+If SnakeWRAP was useful to your research, please cite this code as well as both the publication associated with metaWRAP and Snakemake:
+
+Krapohl J and Pickett BE. METASnake: a Snakemake workflow to facilitate automated processing of metagenomic data through the metaWRAP pipeline [version 1; peer review: 1 approved]. F1000Research 2022, 11:265
 
 MetaWRAP - a flexible pipeline for genome-resolved metagenomic data analysis. 
 
